@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Geografía Urbana - 3º ESO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .pregunta {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .opciones {
+            display: flex;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Geografía Urbana: Espacios Urbanos - 3º ESO</h1>
+    <p>Instrucciones: Selecciona la respuesta correcta para cada pregunta. Cada pregunta vale 2 puntos.</p>
+    
+    <form id="testForm">
+        <div class="pregunta">
+            <h3>1. ¿Qué característica define principalmente el espacio urbano?</h3>
+            <div class="opciones">
+                <label><input type="radio" name="p1" value="a"> La presencia exclusiva de rascacielos</label>
+                <label><input type="radio" name="p1" value="b"> La concentración de población y actividades económicas en un territorio limitado</label>
+                <label><input type="radio" name="p1" value="c"> El número de habitantes superior a 10.000</label>
+                <label><input type="radio" name="p1" value="d"> La existencia únicamente de edificios administrativos</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h3>2. ¿Qué se considera una ciudad en España según el Instituto Nacional de Estadística?</h3>
+            <div class="opciones">
+                <label><input type="radio" name="p2" value="a"> Cualquier núcleo de población con más de 5.000 habitantes</label>
+                <label><input type="radio" name="p2" value="b"> Municipios con más de 10.000 habitantes censados</label>
+                <label><input type="radio" name="p2" value="c"> Territorios con más de 50.000 habitantes</label>
+                <label><input type="radio" name="p2" value="d"> Localidades con más de 20.000 habitantes</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h3>3. El casco histórico de una ciudad se caracteriza por:</h3>
+            <div class="opciones">
+                <label><input type="radio" name="p3" value="a"> Ser la zona más moderna de la ciudad</label>
+                <label><input type="radio" name="p3" value="b"> Contener las construcciones más recientes</label>
+                <label><input type="radio" name="p3" value="c"> Ser el centro originario de la ciudad, con edificios antiguos y traza urbana tradicional</label>
+                <label><input type="radio" name="p3" value="d"> Ubicarse siempre en la periferia de la ciudad</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h3>4. ¿Qué función tiene el ensanche en la estructura urbana?</h3>
+            <div class="opciones">
+                <label><input type="radio" name="p4" value="a"> Ser la zona industrial de la ciudad</label>
+                <label><input type="radio" name="p4" value="b"> Representar la expansión planificada de la ciudad más allá del casco histórico</label>
+                <label><input type="radio" name="p4" value="c"> Delimitar los suburbios</label>
+                <label><input type="radio" name="p4" value="d"> Concentrar únicamente edificios administrativos</label>
+            </div>
+        </div>
+
+        <div class="pregunta">
+            <h3>5. Un suburbio se define como:</h3>
+            <div class="opciones">
+                <label><input type="radio" name="p5" value="a"> Un área urbana completamente integrada en el centro de la ciudad</label>
+                <label><input type="radio" name="p5" value="b"> Una zona periférica generalmente con menor desarrollo y condiciones socioeconómicas</label>
+                <label><input type="radio" name="p5" value="c"> El centro histórico de la ciudad</label>
+                <label><input type="radio" name="p5" value="d"> Un área exclusivamente residencial de alto nivel</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="corregirTest()">Enviar Respuestas</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function corregirTest() {
+            const respuestasCorrectas = ['b', 'b', 'c', 'b', 'b'];
+            let respuestas = [];
+            let nota = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const respuesta = document.querySelector(`input[name="p${i}"]:checked`);
+                if (respuesta) {
+                    respuestas.push(respuesta.value);
+                    if (respuesta.value === respuestasCorrectas[i-1]) {
+                        nota += 2;
+                    }
+                } else {
+                    respuestas.push(null);
+                }
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <h2>Resultados del Test</h2>
+                <p>Nota: ${nota}/10</p>
+                <h3>Respuestas Correctas:</h3>
+                <ul>
+                    <li>1. Concentración de población y actividades económicas</li>
+                    <li>2. Municipios con más de 10.000 habitantes</li>
+                    <li>3. Centro originario con edificios antiguos</li>
+                    <li>4. Expansión planificada más allá del casco histórico</li>
+                    <li>5. Zona periférica con menor desarrollo</li>
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>
